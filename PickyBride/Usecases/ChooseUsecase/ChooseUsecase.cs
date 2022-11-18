@@ -1,7 +1,7 @@
 ﻿using PickyBride.Domain.Entities;
 using PickyBride.Domain.Repository.ContenderRepository;
 
-namespace PickyBride.Usecases;
+namespace PickyBride.Usecases.ChooseUsecase;
 
 public class ChooseUsecase
 {

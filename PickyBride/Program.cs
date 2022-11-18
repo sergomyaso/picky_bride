@@ -6,7 +6,7 @@ using PickyBride.Domain.Entities.FriendEntity;
 using PickyBride.Domain.Repository.ContenderRepository;
 using PickyBride.HostedServices;
 using PickyBride.Infrastructure.ContenderRepository.RDT;
-using PickyBride.Usecases;
+using PickyBride.Usecases.ChooseUsecase;
 
 namespace PickyBride;
 
