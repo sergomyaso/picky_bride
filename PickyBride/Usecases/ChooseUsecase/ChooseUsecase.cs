@@ -18,11 +18,16 @@ public class ChooseUsecase
 
     public SimulateChooseOutput SimulateChoose(SimulateChooseInput input)
     {
-        var contenders = _repository.GetAll(new ContenderGetAllFilter(input.CountContenders));
+        var contenders = _repository.GetAttemptContenders(input.AttemptNumber);
+        if (contenders == null || contenders.Count == 0)
+        {
+            throw new Exception();
+        }
+        
         _hall.FillHall(contenders);
         _princess.PreparePrincess(input.CountContenders);
-
-
+        
+        
         for (var nextContender = _hall.GetNextContender();
              nextContender != null;
              nextContender = _hall.GetNextContender())
@@ -32,7 +37,7 @@ public class ChooseUsecase
                 break;
             }
         }
-
+        
         return new SimulateChooseOutput(_princess.GetHappinessLevel());
     }
 }

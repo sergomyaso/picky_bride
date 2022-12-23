@@ -1,3 +1,3 @@
 ﻿namespace PickyBride.Usecases.ChooseUsecase;
 
-public record SimulateChooseInput(int CountContenders);
+public record SimulateChooseInput(int CountContenders, int AttemptNumber);

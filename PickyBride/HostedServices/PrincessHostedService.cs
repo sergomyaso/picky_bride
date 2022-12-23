@@ -6,9 +6,11 @@ namespace PickyBride.HostedServices;
 public class PrincessHostedService : IHostedService
 {
     private ChooseUsecase _chooseUsecase;
+    private int _attemptNumber;
 
-    public PrincessHostedService(ChooseUsecase chooseUsecase)
+    public PrincessHostedService(ChooseUsecase chooseUsecase, PrincessHostedServiceInput input)
     {
+        _attemptNumber = input.AttemptNumber;
         _chooseUsecase = chooseUsecase;
     }
 
@@ -22,8 +24,9 @@ public class PrincessHostedService : IHostedService
     {
         int countContenders = 100;
 
-        var output = _chooseUsecase.SimulateChoose(new SimulateChooseInput(countContenders));
-        Console.Out.Write($"Princess get level of happiness {output.PrincessHappinessLevel}");
+        var output = _chooseUsecase.SimulateChoose(new SimulateChooseInput(countContenders, _attemptNumber));
+        Console.Out.Write(
+            $"Princess get level of happiness {output.PrincessHappinessLevel} from attempt {_attemptNumber}");
     }
 
     public Task StopAsync(CancellationToken cancellationToken) => Task.CompletedTask;

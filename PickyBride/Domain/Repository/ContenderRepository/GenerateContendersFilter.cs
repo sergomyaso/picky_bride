@@ -1,3 +1,3 @@
 ﻿namespace PickyBride.Domain.Repository.ContenderRepository;
 
-public record ContenderGetAllFilter(int Count);
+public record GenerateContendersFilter(int Count);
